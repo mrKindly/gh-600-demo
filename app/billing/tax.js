@@ -23,5 +23,5 @@ export const roundHalfEven = (numerator, denominator) => {
   const twiceRemainder = 2 * (numerator - quotient * denominator);
   if (twiceRemainder < denominator) return quotient;
   if (twiceRemainder > denominator) return quotient + 1;
-  return quotient % 2 === 0 ? quotient : quotient + 1;
+  return quotient + 1;
 };

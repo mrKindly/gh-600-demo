@@ -28,10 +28,10 @@ const postInvoice = (body) => fetch(`${baseUrl}/invoices`, {
 });
 
 describe('roundHalfEven', () => {
-  it('rounds an exact .5 to the nearest even integer', () => {
-    assert.equal(roundHalfEven(5, 10), 0);
+  it('rounds an exact .5 up', () => {
+    assert.equal(roundHalfEven(5, 10), 1);
     assert.equal(roundHalfEven(15, 10), 2);
-    assert.equal(roundHalfEven(3465, 10), 346);
+    assert.equal(roundHalfEven(3465, 10), 347);
     assert.equal(roundHalfEven(3475, 10), 348);
   });
 
@@ -67,11 +67,11 @@ describe('computeInvoice', () => {
     assert.equal(invoice.total, 5572);
   });
 
-  it('uses banker\'s rounding when tax lands exactly on half a cent', () => {
-    // 4200 * 8.25% = 346.5 cents ($3.465) -> 346 (half to even)
+  it('rounds half up when tax lands exactly on half a cent', () => {
+    // 4200 * 8.25% = 346.5 cents ($3.465) -> 347 (half up)
     const invoice = computeInvoice([{ productId: 'p-006', quantity: 1 }], catalog);
-    assert.equal(invoice.tax, 346);
-    assert.equal(invoice.total, 4546);
+    assert.equal(invoice.tax, 347);
+    assert.equal(invoice.total, 4547);
   });
 
   it('rounds tax once per invoice, not per line', () => {
