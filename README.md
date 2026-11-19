@@ -27,21 +27,27 @@ The full contract is in [`docs/api.md`](docs/api.md).
 | `app/api.js` | `createServer()`, routing, JSON responses, errors |
 | `app/billing/` | Finance-critical tax and invoice math (integer cents) |
 | `tests/` | Unit and HTTP tests on `node:test` |
-| `demo/issues/` | Ready-made issue texts used in the demo clips |
+| `demo/issues/` | Ready-made issue texts: `03` is the one in the talk, `01` is a safe first run, `02` makes the agent reach for external docs (try the firewall) |
+| `evals/` | 12 behavior checks for agent pull requests |
 
-## Branches
+## Where each exam domain lives
 
-| Branch | Contents |
-| --- | --- |
-| `00-baseline` | The bare app, no agent configuration |
-| `main` | `00-baseline` plus `AGENTS.md`, `.github/CODEOWNERS` and the agent task issue template |
+| # | GH-600 domain | Files | What to try |
+| --- | --- | --- | --- |
+| 1 | Agent architecture and SDLC | [`AGENTS.md`](AGENTS.md), [`.github/copilot-instructions.md`](.github/copilot-instructions.md), [`.github/ISSUE_TEMPLATE/agent-task.yml`](.github/ISSUE_TEMPLATE/agent-task.yml) | Assign a vague issue and a scoped one, compare the pull requests |
+| 2 | Tool use and environment | [`docs/mcp.md`](docs/mcp.md), [`docs/mcp-config.example.json`](docs/mcp-config.example.json) | Set `tools` to `"*"` and list what the agent can now call |
+| 3 | Memory, state and execution | [`docs/agent-state/decisions.md`](docs/agent-state/decisions.md) | Start a fresh session and check it reads the log first |
+| 4 | Evaluation and tuning | [`evals/`](evals/), [`.github/workflows/evals.yml`](.github/workflows/evals.yml) | Change one instruction line, rerun the same issue, compare the score |
+| 5 | Multi-agent coordination | [`.github/agents/`](.github/agents/) | Compare the tool lists of the planner, implementer and reviewer |
+| 6 | Guardrails and accountability | [`.github/CODEOWNERS`](.github/CODEOWNERS) plus a ruleset on `main` | Run issue `03`: the pull request cannot merge without the code owner |
 
 ## Reproduce the demo
 
-1. Fork this repository. `main` holds the recording setup; `00-baseline` is the bare app.
-2. Enable Issues, Actions and the Copilot coding agent in the fork settings.
-3. Create an issue from the **Agent task** template with the text of [`demo/issues/03-rounding-rule.md`](demo/issues/03-rounding-rule.md).
-4. Assign the issue to Copilot and watch the pull request it opens.
+1. Fork this repository. Enable Issues, Actions and the Copilot cloud agent (a paid Copilot plan is required).
+2. Replace `@leifdeveloper` in [`.github/CODEOWNERS`](.github/CODEOWNERS) with a second account of yours, and add that account as a collaborator. It must not be the account that assigns the issue.
+3. Create a branch ruleset for the default branch: empty bypass list, require a pull request with 1 approval and review from Code Owners, require the `test` status check. Rulesets are settings, so a fork does not copy them.
+4. Create an issue from the **Agent task** template with the text of [`demo/issues/03-rounding-rule.md`](demo/issues/03-rounding-rule.md).
+5. Assign the issue to Copilot. When the pull request opens, mark it ready for review, approve the workflow run and look at the merge box.
 
 ## License
 
