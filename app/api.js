@@ -30,8 +30,11 @@ const parseInvoiceRequest = (raw) => {
 
 const handleHealth = () => reply(200, { status: 'ok' });
 
-const handleListProducts = () => {
-  const items = listProducts();
+const handleListProducts = ({ url }) => {
+  const category = url.searchParams.get('category');
+  const items = category === null
+    ? listProducts()
+    : listProducts().filter((product) => product.category === category);
   return reply(200, { items, count: items.length });
 };
 

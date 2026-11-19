@@ -26,11 +26,14 @@ curl localhost:3000/health
 
 ## `GET /products`
 
-Returns every product in catalog order.
+Without a query parameter, returns every product in catalog order. The optional `category` query parameter filters the list by an exact, case-sensitive category.
 
 ```sh
 curl localhost:3000/products
+curl 'localhost:3000/products?category=books'
 ```
+
+When no products match the category, the response contains an empty `items` array and a `count` of `0`.
 
 ```json
 {

@@ -10,6 +10,14 @@ Reason:    why
 Next:      what is left to do, or "nothing"
 ```
 
+## Product category filtering
+
+```text
+Decision:  filter GET /products by an exact category query value when provided
+Reason:    clients can request category-specific products while unfiltered responses preserve catalog order
+Next:      nothing
+```
+
 ## Money is stored as integer cents
 
 ```text

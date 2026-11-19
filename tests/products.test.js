@@ -51,6 +51,27 @@ describe('GET /products', () => {
     assert.deepEqual(body.items.map((item) => item.id), listProducts().map((product) => product.id));
   });
 
+  it('filters products by an exact category', async () => {
+    const res = await fetch(`${baseUrl}/products?category=books`);
+    const body = await res.json();
+    assert.equal(res.status, 200);
+    assert.ok(body.items.length > 0);
+    assert.ok(body.items.every((item) => item.category === 'books'));
+    assert.equal(body.count, body.items.length);
+  });
+
+  it('returns an empty list when no products match the category', async () => {
+    const res = await fetch(`${baseUrl}/products?category=toys`);
+    assert.equal(res.status, 200);
+    assert.deepEqual(await res.json(), { items: [], count: 0 });
+  });
+
+  it('matches categories case-sensitively', async () => {
+    const res = await fetch(`${baseUrl}/products?category=Books`);
+    assert.equal(res.status, 200);
+    assert.deepEqual(await res.json(), { items: [], count: 0 });
+  });
+
   it('responds 405 for an unsupported method', async () => {
     const res = await fetch(`${baseUrl}/products`, { method: 'DELETE' });
     assert.equal(res.status, 405);
