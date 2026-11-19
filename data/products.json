@@ -1,0 +1,11 @@
+[
+  { "id": "p-001", "name": "Field Notes on Distributed Systems", "category": "books", "priceCents": 1999, "currency": "USD", "inStock": true },
+  { "id": "p-002", "name": "The Quiet Compiler", "category": "books", "priceCents": 2450, "currency": "USD", "inStock": true },
+  { "id": "p-003", "name": "A Field Guide to Small Teams", "category": "books", "priceCents": 1275, "currency": "USD", "inStock": false },
+  { "id": "p-004", "name": "Hexfall Tile Strategy Game", "category": "games", "priceCents": 3499, "currency": "USD", "inStock": true },
+  { "id": "p-005", "name": "Orbit Runners Card Deck", "category": "games", "priceCents": 1250, "currency": "USD", "inStock": true },
+  { "id": "p-006", "name": "Lantern Keep Puzzle Box", "category": "games", "priceCents": 4200, "currency": "USD", "inStock": false },
+  { "id": "p-007", "name": "Graphite Desk Organizer", "category": "office", "priceCents": 2899, "currency": "USD", "inStock": true },
+  { "id": "p-008", "name": "Linen Notebook A5", "category": "office", "priceCents": 899, "currency": "USD", "inStock": true },
+  { "id": "p-009", "name": "Quiet Click Wireless Mouse", "category": "office", "priceCents": 2599, "currency": "USD", "inStock": true }
+]
