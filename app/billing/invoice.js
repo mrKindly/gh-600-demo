@@ -1,6 +1,4 @@
-// ⚠️ FINANCE-CRITICAL. Changes require review by the finance code owner.
-// Tax is rounded once per invoice, half to even (banker's rounding).
-// Do not change without approval.
+// Tax math. All amounts are integer cents; tax is rounded once per invoice, half to even (banker's rounding).
 
 import { BPS_PER_UNIT, TAX_RATE_BPS, roundHalfEven } from './tax.js';
 

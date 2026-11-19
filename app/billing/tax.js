@@ -1,6 +1,4 @@
-// ⚠️ FINANCE-CRITICAL. Changes require review by the finance code owner.
-// Tax is rounded once per invoice, half to even (banker's rounding).
-// Do not change without approval.
+// Tax math. All amounts are integer cents; tax is rounded once per invoice, half to even (banker's rounding).
 
 /** Sales tax rate in basis points: 825 bps = 8.25%. */
 export const TAX_RATE_BPS = 825;
