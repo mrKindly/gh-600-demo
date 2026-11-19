@@ -1,7 +1,8 @@
 // ⚠️ FINANCE-CRITICAL. Changes require review by the finance code owner.
-// Tax is rounded once per invoice, not per line. Do not change without approval.
+// Tax is rounded once per invoice, half to even (banker's rounding).
+// Do not change without approval.
 
-import { BPS_PER_UNIT, TAX_RATE_BPS, roundHalfUp } from './tax.js';
+import { BPS_PER_UNIT, TAX_RATE_BPS, roundHalfEven } from './tax.js';
 
 /**
  * @typedef {import('../products.js').Product} Product
@@ -27,7 +28,7 @@ export const computeInvoice = (lines, catalog) => {
   });
 
   const subtotal = invoiceLines.reduce((sum, line) => sum + line.lineTotal, 0);
-  const tax = roundHalfUp(subtotal * TAX_RATE_BPS, BPS_PER_UNIT);
+  const tax = roundHalfEven(subtotal * TAX_RATE_BPS, BPS_PER_UNIT);
 
   return { lines: invoiceLines, subtotal, tax, total: subtotal + tax };
 };

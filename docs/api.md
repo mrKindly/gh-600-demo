@@ -59,7 +59,7 @@ An unknown id returns `404 { "error": "not_found" }`.
 
 ## `POST /invoices`
 
-Computes an invoice. Tax is 8.25% of the subtotal, rounded half up once per invoice.
+Computes an invoice. Tax is 8.25% of the subtotal, rounded once per invoice using banker's rounding (half to even): 346.5 cents becomes 346.
 
 ```sh
 curl -X POST localhost:3000/invoices \

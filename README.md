@@ -43,9 +43,11 @@ Every branch builds on the previous one and changes only `.github/`, `AGENTS.md`
 | `05-orchestration` | Orchestration of multiple agents | [compare](../../compare/04-evaluation...05-orchestration) |
 | `06-guardrails` | Guardrails: code owners, rulesets, required checks | [compare](../../compare/05-orchestration...06-guardrails) |
 
+Branches 01–06 are for reading and trying out; they are never merged into `main`.
+
 ## Reproduce the demo
 
-1. Fork this repository and keep `main` equal to `00-baseline`.
+1. Fork this repository. `main` holds the recording setup (`00-baseline` plus `AGENTS.md`, `CODEOWNERS` and the issue template); `00-baseline` is the bare app.
 2. Enable Issues, Actions and the Copilot coding agent in the fork settings.
 3. Create an issue from a file in [`demo/issues/`](demo/issues/), for example `01-category-filter.md`.
 4. Assign the issue to Copilot and watch the pull request it opens.
