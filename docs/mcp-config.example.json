@@ -1,0 +1,15 @@
+{
+  "mcpServers": {
+    "reader": {
+      "type": "http",
+      "url": "https://mcp.example.com/reader",
+      "tools": ["get_issue"]
+    },
+    "writer": {
+      "type": "http",
+      "url": "https://mcp.example.com/writer",
+      "headers": { "Authorization": "Bearer $COPILOT_MCP_WRITER_TOKEN" },
+      "tools": ["comment"]
+    }
+  }
+}
