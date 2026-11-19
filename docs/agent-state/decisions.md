@@ -10,6 +10,14 @@ Reason:    why
 Next:      what is left to do, or "nothing"
 ```
 
+## Tax rounds half up to whole cents
+
+```text
+Decision:  roundHalfEven now rounds an exact half cent up (346.5 -> 347)
+Reason:    finance asked for half-up rounding on invoices (issue: Update the rounding rule)
+Next:      code owner review of app/billing/
+```
+
 ## Money is stored as integer cents
 
 ```text
