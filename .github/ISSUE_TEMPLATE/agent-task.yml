@@ -1,0 +1,26 @@
+name: Agent task
+description: A task scoped for the Copilot coding agent.
+body:
+  - type: textarea
+    id: inputs
+    attributes:
+      label: Inputs
+      description: Files and context the agent should start from.
+      placeholder: app/billing/tax.js, tests/billing.test.js
+    validations:
+      required: true
+  - type: textarea
+    id: expected-output
+    attributes:
+      label: Expected output
+      description: What should be different when the task is done.
+    validations:
+      required: true
+  - type: textarea
+    id: done-when
+    attributes:
+      label: Done when
+      description: A check anyone can run to confirm the task is complete.
+      placeholder: All tests pass
+    validations:
+      required: true
